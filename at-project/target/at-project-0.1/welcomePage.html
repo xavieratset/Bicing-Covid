@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Welcome to BCV Service</title>
+</head>
+<script type="text/javascript">
+function loadDatabase() {
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			document.getElementById("sectionId").innerHTML = xmlhttp.responseText;
+		}
+	};
+	xmlhttp.open("GET", "at/item/dbConnection", true);
+	xmlhttp.send();
+}
+</script>
+<body>
+Welcome!
+<h2>Click the button below to go to the service page.</h2>
+<button type="button" onclick="getClientStationsInfo()">Go to page</button>
+<form action="http://localhost:8080/at-project-0.1/webProject.html">
+    <input type="submit" value="Go to Google" onclick="getClientStationsInfo()"/>
+</form>
+</body>
+</html>

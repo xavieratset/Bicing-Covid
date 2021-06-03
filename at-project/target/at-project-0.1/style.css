@@ -1,0 +1,97 @@
+@charset "ISO-8859-1";
+
+html, body, h1, h2, h3, h4, h5, h6 {font-family: "Open Sans, sans-seriff
+}
+
+body {
+	background-color: #fedef3;
+}
+
+h1 {
+	font-weight: 800;
+	font-size: 300%;
+}
+
+h2 {
+	font-weight: 600;
+	font-size: 180%;
+}
+
+.square {
+	position: relative;
+	width: 35%;
+    height: 50%;
+    text-align: center;
+    border-style: solid;
+}
+.square h1 {
+    font-size: 150%;
+}
+
+.square1 {
+	top: 15;
+    background: #9191c8;
+    margin-left: 10%;
+    margin-top: 0%;
+}
+
+.square2 {
+	top: 15;
+	right: 0;
+    background: #ff8080;
+    margin-left: 5%;
+    margin-right: 10%;
+    margin-top: 0%;
+}
+
+.square3 {
+	top: 0;
+	right: 0;
+    background: #87d6fc;
+    margin-left: 5%;
+    margin-right: 0%;
+    margin-top: 0%;
+}
+
+.square4 {
+	top: 0;
+	right: 0;
+    background: #fea970;
+    margin-left: 10%;
+    margin-top: 0%;
+}
+
+.title {
+	margin-top: 2%;
+	text-align: center;
+}
+
+.output {
+	position:bottom;
+}
+
+.boxed {
+	bottom: 0;
+	position: relative;
+	border-style: solid;
+	margin-top: 10%;
+	margin-bottom:2%;
+	width: 96%;
+	margin-left: 2%;
+	background: #ffffff;
+}
+
+.output-title {
+	text-align:center;
+	font-size: 200%;
+	font-weight: 700;
+}
+
+.output-text {
+	font-size: 120%;
+	margin-bottom: 1%;
+}
+
+.form-text {
+	font-size: 80%;
+}

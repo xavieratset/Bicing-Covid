@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>AtProject</title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="style.css">
+<script>
+
+	function load() {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				document.getElementById("sectionId").innerHTML = xmlhttp.responseText;
+			}
+		};
+		xmlhttp.open("GET", "ban/stations/list", true);
+		xmlhttp.send();
+	}
+	
+	function addClient() {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				document.getElementById("output").innerHTML = xmlhttp.responseText;
+			}
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 404) {
+				document.getElementById("output").innerHTML = xmlhttp.responseText;
+			}
+		};
+		
+		var params = {
+				"phoneNumber" : document.getElementById("phoneNumber").value,
+				"telegramToken" : document.getElementById("telegramToken").value,
+				"subscribedStations" : document.getElementById("subscribedStations").value.replace(
+						/\s/g, "").split(","),
+				"region": document.getElementById("regions").value
+		};
+		
+		xmlhttp.open("POST", "at/item/addClient", true);
+		xmlhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+		xmlhttp.send(JSON.stringify(params));
+	}
+	
+	function addStationToClient() {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				document.getElementById("output").innerHTML = xmlhttp.responseText;
+			}
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 404) {
+				document.getElementById("output").innerHTML = xmlhttp.responseText;
+			}
+		};
+		
+		var params = {
+				"phoneNumber" : document.getElementById("phoneNumberCheck").value,
+				"subscribedStations" : document.getElementById("newSubscribedStations").value.replace(
+						/\s/g, "").split(",")
+		};
+		
+		xmlhttp.open("POST", "at/item/addStation", true);
+		xmlhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+		xmlhttp.send(JSON.stringify(params));
+	}
+	
+	function getStationsInfo() {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				document.getElementById("output").innerHTML = xmlhttp.responseText;
+			}
+		};
+		
+		xmlhttp.open("POST", "at/item/getAllStations", true);
+		xmlhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+		xmlhttp.send();
+	}
+	
+	function getAllClients() {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				document.getElementById("output").innerHTML = xmlhttp.responseText;
+			}
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 404) {
+				document.getElementById("output").innerHTML = xmlhttp.responseText;
+			}
+		};
+		
+		xmlhttp.open("GET", "at/item/getAllClients", true);
+		xmlhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+		xmlhttp.send();
+	}
+	
+	function getClientStationsInfo() {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				document.getElementById("output").innerHTML = xmlhttp.responseText;
+			}
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 404) {
+				document.getElementById("output").innerHTML = xmlhttp.responseText;
+			}
+		};
+		
+		var params = {
+				"phoneNumber" : document.getElementById("phoneNumberNotifyStations").value
+		};
+		
+		xmlhttp.open("POST", "at/item/notifyStationsInfo", true);
+		xmlhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+		xmlhttp.send(JSON.stringify(params));
+	}
+	
+	function getCovidInfo() {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				document.getElementById("output").innerHTML = xmlhttp.responseText;
+			}
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 404) {
+				document.getElementById("output").innerHTML = xmlhttp.responseText;
+			}
+		};
+		
+		xmlhttp.open("POST", "at/item/getCovid", true);
+		xmlhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+		xmlhttp.send();
+	}
+	
+	function changeRegion() {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				document.getElementById("output").innerHTML = xmlhttp.responseText;
+			}
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 404) {
+				document.getElementById("output").innerHTML = xmlhttp.responseText;
+			}
+		};
+		
+		var params = {
+				"phoneNumber" : document.getElementById("phoneNumberCheckRegion").value,
+				"region" : document.getElementById("updatedRegion").value
+		};
+		
+		xmlhttp.open("POST", "at/item/changeRegion", true);
+		xmlhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+		xmlhttp.send(JSON.stringify(params));
+	}
+	
+	function getClientCovidInfo() {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				document.getElementById("output").innerHTML = xmlhttp.responseText;
+			}
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 404) {
+				document.getElementById("output").innerHTML = xmlhttp.responseText;
+			}
+		};
+		
+		var params = {
+				"phoneNumber" : document.getElementById("phoneNumberNotifyStations").value
+		};
+		
+		xmlhttp.open("POST", "at/item/notifyCovidInfo", true);
+		xmlhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+		xmlhttp.send(JSON.stringify(params));
+	}
+	
+</script>
+
+<body>
+	<div class="parent">
+		<div class="title">
+			<h1>BCV Subscription Service</h1><br>
+		</div>
+		<div style="float: left" class="square square1">
+			<br>
+			<h2>Create BCV Client</h2>
+			<br>
+			<form method="POST" action="at/item/addClient">
+				Phone Number: <input type="text" name="phoneNumber" id="phoneNumber"><br>
+				<br> telegramToken: <input type="text" name="telegramToken"
+					id="telegramToken"><br>
+				<br> Stations to subscribe (e.g.: 1,3,4): <input type="text"
+					name="subscribedStations" id="subscribedStations"><br>
+				<br> <label for="regions">Choose a region:</label> <select id="regions"
+					name="regions">
+					<option value="ALT CAMP">Alt Camp</option>
+					<option value="ALT EMPORDA">Alt Empordà</option>
+					<option value="ALT PENEDES">Alt Penedès</option>
+					<option value="ALT URGELL">Alt Urgell</option>
+					<option value="ALTA RIBAGORÇA">Alta Ribagorça</option>
+					<option value="ANOIA">Anoia</option>
+					<option value="VALL D'ARAN">Vall d'Aran</option>
+					<option value="BAGES">Bages</option>
+					<option value="BAIX CAMP">Baix Camp</option>
+					<option value="BAIX EBRE">Baix Ebre</option>
+					<option value="BAIX EMPORDA">Baix Empordà</option>
+					<option value="BAIX LLOBREGAT">Baix Llobregat</option>
+					<option value="BAIX PENEDES">Baix Penedès</option>
+					<option value="BARCELONES">Barcelonès</option>
+					<option value="BERGUEDA">Berguedà</option>
+					<option value="CERDANYA">Cerdanya</option>
+					<option value="CONCA DE BARBERA">Conca de Barberà</option>
+					<option value="GARRAF">Garraf</option>
+					<option value="GARRIGUES">Garrigues</option>
+					<option value="GARROTXA">Garrotxa</option>
+					<option value="GIRONES">Gironès</option>
+					<option value="MARESME">Maresme</option>
+					<option value="MOIANÈS">Moianès</option>
+					<option value="MONTSIA">Montsià</option>
+					<option value="NOGUERA">Noguera</option>
+					<option value="OSONA">Osona</option>
+					<option value="PALLARS JUSSA">Pallars Jussà</option>
+					<option value="PALLARS SOBIRA">Pallars Sobirà</option>
+					<option value="PLA D'URGELL">Pla d'Urgell</option>
+					<option value="PLA DE L'ESTANY">Pla de l'Estany</option>
+					<option value="PRIORAT">Priorat</option>
+					<option value="RIBERA D'EBRE">Ribera d'Ebre</option>
+					<option value="RIPOLLES">Ripollès</option>
+					<option value="SEGARRA">Segarra</option>
+					<option value="SEGRIA">Segrià</option>
+					<option value="SELVA">Selva, la</option>
+					<option value="SOLSONES">Solsonès</option>
+					<option value="TARRAGONES">Tarragonès</option>
+					<option value="TERRA ALTA">Terra Alta</option>
+					<option value="URGELL">Urgell</option>
+					<option value="VALLES OCCIDENTAL">Vallès Occidental</option>
+					<option value="VALLES ORIENTAL">Vallès Oriental</option>
+				</select>
+				<button type="button" onclick="addClient()">Submit</button>
+			</form><br>
+		</div>
+		<div style="float: left" class="square square2">
+			<br>
+			<h2>Add Stations to a client</h2>
+			<br>
+			<form method="POST" action="at/item/addClient">
+				Phone Number: <input type="text" name="phoneNumberCheck"
+					id="phoneNumberCheck"><br>
+				<br> Stations to subscribe(e.g.: 1,3,4): <input type="text"
+					name="newSubscribedStations" id="newSubscribedStations"><br>
+				<br>
+				<button type="button" onclick="addStationToClient()">Submit</button>
+			</form><br>
+		</div>
+		<div style="float: left" class="square square3">
+			<br>
+			<h2>Notify Client</h2>
+			<br>
+			<form method="POST" action="at/item/addClient">
+				Phone Number: <input type="text" name="phoneNumberNotifyStations"
+					id="phoneNumberNotifyStations"><br>
+				<br>
+				<button type="button" onclick="getClientStationsInfo()">Notify Bicing</button>
+				<button type="button" onclick="getClientCovidInfo()">Notify Covid</button>
+			</form><br>
+		</div>
+		<div style="float: left" class="square square4">
+			<br>
+			<h2>Change region</h2>
+			<br>
+			<form>
+				Phone Number: <input type="text" name="phoneNumberCheckRegion"
+					id="phoneNumberCheckRegion"><br>
+								<br> <label for="updatedRegion">Choose a new region:</label> <select id="updatedRegion"
+					name="updatedRegion">
+					<option value="ALT CAMP">Alt Camp</option>
+					<option value="ALT EMPORDA">Alt Empordà</option>
+					<option value="ALT PENEDES">Alt Penedès</option>
+					<option value="ALT URGELL">Alt Urgell</option>
+					<option value="ALTA RIBAGORÇA">Alta Ribagorça</option>
+					<option value="ANOIA">Anoia</option>
+					<option value="VALL D'ARAN">Vall d'Aran</option>
+					<option value="BAGES">Bages</option>
+					<option value="BAIX CAMP">Baix Camp</option>
+					<option value="BAIX EBRE">Baix Ebre</option>
+					<option value="BAIX EMPORDA">Baix Empordà</option>
+					<option value="BAIX LLOBREGAT">Baix Llobregat</option>
+					<option value="BAIX PENEDES">Baix Penedès</option>
+					<option value="BARCELONES">Barcelonès</option>
+					<option value="BERGUEDA">Berguedà</option>
+					<option value="CERDANYA">Cerdanya</option>
+					<option value="CONCA DE BARBERA">Conca de Barberà</option>
+					<option value="GARRAF">Garraf</option>
+					<option value="GARRIGUES">Garrigues</option>
+					<option value="GARROTXA">Garrotxa</option>
+					<option value="GIRONES">Gironès</option>
+					<option value="MARESME">Maresme</option>
+					<option value="MOIANÈS">Moianès</option>
+					<option value="MONTSIA">Montsià</option>
+					<option value="NOGUERA">Noguera</option>
+					<option value="OSONA">Osona</option>
+					<option value="PALLARS JUSSA">Pallars Jussà</option>
+					<option value="PALLARS SOBIRA">Pallars Sobirà</option>
+					<option value="PLA D'URGELL">Pla d'Urgell</option>
+					<option value="PLA DE L'ESTANY">Pla de l'Estany</option>
+					<option value="PRIORAT">Priorat</option>
+					<option value="RIBERA D'EBRE">Ribera d'Ebre</option>
+					<option value="RIPOLLES">Ripollès</option>
+					<option value="SEGARRA">Segarra</option>
+					<option value="SEGRIA">Segrià</option>
+					<option value="SELVA">Selva, la</option>
+					<option value="SOLSONES">Solsonès</option>
+					<option value="TARRAGONES">Tarragonès</option>
+					<option value="TERRA ALTA">Terra Alta</option>
+					<option value="URGELL">Urgell</option>
+					<option value="VALLES OCCIDENTAL">Vallès Occidental</option>
+					<option value="VALLES ORIENTAL">Vallès Oriental</option>
+				</select>
+				<button type="button" onclick="changeRegion()">Submit</button>
+			</form><br>
+		</div>
+		<div>
+			<button type="button" onclick="getCovidInfo()">Get Covid
+				Info</button>
+		</div>
+		<div class="stations-button">
+			<button type="button" onclick="getStationsInfo()">Get
+				Stations Info</button>
+		</div>
+		<div class="clients-button">
+			<button type="button" onclick="getAllClients()">Get All
+				Clients</button>
+		</div>
+		<br><br><br><br><br><br><br><br>
+		<div class="boxed">
+			<div class="output-title">Output Information:</div>
+			<div class="output-text" id="output"></div>
+		</div>
+
+	</div>
+
+</body>
+</html>
