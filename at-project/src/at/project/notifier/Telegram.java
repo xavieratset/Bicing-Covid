@@ -10,7 +10,6 @@ public class Telegram {
 	private String tgURL = "https://api.telegram.org";
 	private String sendMsgRequest = "/bot" + "1654903777:AAGBE15XXmRJoZipItTeoVBBjRgUEP18UNU" + "/sendMessage";
 	static int chat_id = 731571954;
-	static int chat_id_Maialen = 1607779034;
 	
 	//t.me/bicing_info_bot
 
